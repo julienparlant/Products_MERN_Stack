@@ -1,44 +1,40 @@
-import { Container, Flex, HStack, Text } from "@chakra-ui/react";
-import { Button } from "@chakra-ui/react";
-import { PlusSquareIcon } from "@chakra-ui/icons";
-import { Link } from "react-router-dom";
-import { useColorMode } from "@chakra-ui/react";
-import { IoMoon } from "react-icons/io5";
-import { LuSun } from "react-icons/lu";
+import { Container, Flex, HStack, Text } from '@chakra-ui/react';
+import { Button } from '@chakra-ui/react';
+import { PlusSquareIcon } from '@chakra-ui/icons';
+import { Link } from 'react-router-dom';
+import { useColorMode } from '@chakra-ui/react';
+import { IoMoon } from 'react-icons/io5';
+import { LuSun } from 'react-icons/lu';
 
 const Navbar = () => {
   const { toggleColorMode } = useColorMode();
 
   return (
-    <Container maxW={"1140px"} px={"4px"}>
+    <Container maxW={'1140px'} px={'4px'}>
       <Flex
         h={16}
-        alignItems={"center"}
-        justifyContent={"space-between"}
-        flexDir={{ base: "column", sm: "row" }}
+        alignItems={'center'}
+        justifyContent={'space-between'}
+        flexDir={{ base: 'column', sm: 'row' }}
       >
         <Text
-          fontSize={{ base: "22", sm: "28" }}
-          fontWeight={"bold"}
-          textAlign={"center"}
-          bgGradient={"linear(to-r, cyan.400, blue.500)"}
-          bgClip={"text"}
+          fontSize={{ base: '22', sm: '28' }}
+          fontWeight={'bold'}
+          textAlign={'center'}
+          bgGradient={'linear(to-r, cyan.400, blue.500)'}
+          bgClip={'text'}
         >
-          <Link to={"/"}>New Tech by Juli@n 🛒</Link>
+          <Link to={'/'}>New Tech by Juli@n 🛒</Link>
         </Text>
 
-        <HStack spacing={2} alignItems={"center"}>
-          <Link to={"/create"}>
+        <HStack spacing={2} alignItems={'center'}>
+          <Link to={'/create'}>
             <Button>
               <PlusSquareIcon fontSize={20} />
             </Button>
           </Link>
           <Button onClick={toggleColorMode}>
-            {useColorMode().colorMode === "light" ? (
-              <IoMoon size={20} />
-            ) : (
-              <LuSun size={20} />
-            )}
+            {useColorMode().colorMode === 'light' ? <IoMoon size={20} /> : <LuSun size={20} />}
           </Button>
         </HStack>
       </Flex>
