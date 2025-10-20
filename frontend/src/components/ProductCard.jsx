@@ -1,4 +1,4 @@
-import { DeleteIcon, EditIcon } from '@chakra-ui/icons';
+import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
@@ -19,35 +19,35 @@ import {
   useDisclosure,
   useToast,
   VStack,
-} from '@chakra-ui/react';
-import { useProductStore } from '../store/product';
-import { useState } from 'react';
+} from "@chakra-ui/react";
+import { useProductStore } from "../store/product";
+import { useState } from "react";
 
 const ProductCard = ({ product }) => {
   const [updatedProduct, setUpdatedProduct] = useState(product);
 
-  const textColor = useColorModeValue('gray.600', 'gray.200');
-  const bg = useColorModeValue('white', 'gray.800');
+  const textColor = useColorModeValue("gray.600", "gray.200");
+  const bg = useColorModeValue("white", "gray.800");
 
   const { deleteProduct, updateProduct } = useProductStore();
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const handleDeleteProduct = async pid => {
+  const handleDeleteProduct = async (pid) => {
     const { success, message } = await deleteProduct(pid);
     if (!success) {
       toast({
-        title: 'Error',
+        title: "Error",
         description: message,
-        status: 'error',
+        status: "error",
         duration: 3000,
         isClosable: true,
       });
     } else {
       toast({
-        title: 'Success',
+        title: "Success",
         description: message,
-        status: 'success',
+        status: "success",
         duration: 3000,
         isClosable: true,
       });
@@ -59,17 +59,17 @@ const ProductCard = ({ product }) => {
     onClose();
     if (!success) {
       toast({
-        title: 'Error',
+        title: "Error",
         description: message,
-        status: 'error',
+        status: "error",
         duration: 3000,
         isClosable: true,
       });
     } else {
       toast({
-        title: 'Success',
-        description: 'Product updated successfully',
-        status: 'success',
+        title: "Success",
+        description: "Product updated successfully",
+        status: "success",
         duration: 3000,
         isClosable: true,
       });
@@ -82,10 +82,16 @@ const ProductCard = ({ product }) => {
       rounded="lg"
       overflow="hidden"
       transition="all 0.3s"
-      _hover={{ transform: 'translateY(-5px)', shadow: 'xl' }}
+      _hover={{ transform: "translateY(-5px)", shadow: "xl" }}
       bg={bg}
     >
-      <Image src={product.image} alt={product.name} h={48} w="full" objectFit="cover" />
+      <Image
+        src={product.image}
+        alt={product.name}
+        h={48}
+        w="full"
+        objectFit="cover"
+      />
 
       <Box p={4}>
         <Heading as="h3" size="md" mb={2}>
@@ -118,14 +124,16 @@ const ProductCard = ({ product }) => {
                 placeholder="Product Name"
                 name="name"
                 value={updatedProduct.name}
-                onChange={e => setUpdatedProduct({ ...updatedProduct, name: e.target.value })}
+                onChange={(e) =>
+                  setUpdatedProduct({ ...updatedProduct, name: e.target.value })
+                }
               />
               <Input
                 placeholder="Price"
                 name="price"
                 type="number"
                 value={updatedProduct.price}
-                onChange={e =>
+                onChange={(e) =>
                   setUpdatedProduct({
                     ...updatedProduct,
                     price: e.target.value,
@@ -136,7 +144,7 @@ const ProductCard = ({ product }) => {
                 placeholder="Image URL"
                 name="image"
                 value={updatedProduct.image}
-                onChange={e =>
+                onChange={(e) =>
                   setUpdatedProduct({
                     ...updatedProduct,
                     image: e.target.value,
